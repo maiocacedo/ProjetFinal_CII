@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void){
+int main(void)
+{
 
     boasVindas();
 
@@ -10,6 +11,6 @@ int main(void){
 
     limparTela();
     menuPrincipal();
-    
-return 0;
+
+    return 0;
 }
