@@ -175,17 +175,6 @@ void incluirCarros()
     fclose(arquivoEntrada);
     fclose(arquivoConfirmacao);
 
-    FILE *arquivoSaida = fopen("carros.txt", "a");
-    for (int i = 0; i < totalCarros; i++)
-    {
-        fprintf(arquivoSaida, "%s\n%s\n%d\n%s\n",
-                carros[i].marca,
-                carros[i].modelo,
-                carros[i].ano,
-                carros[i].placa);
-    }
-    fclose(arquivoSaida);
-
     printf("\n%d carros cadastrados com sucesso!\n", totalCarros);
     printf("Comprovante salvo em: cadastros_realizados.txt\n");
 }
@@ -200,6 +189,7 @@ void vizualizarCarros()
         return;
     }
 
+    limparTela();
     printf("\n========== CARROS CADASTRADOS ==========\n");
     for (int i = 0; i < totalCarros; i++)
     {
