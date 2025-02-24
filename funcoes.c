@@ -38,8 +38,7 @@ void menuPrincipal()
 
         case 3:
             limparTela();
-            printf("Clientes");
-
+            menuClientes();
             break;
 
         case 0:
@@ -198,6 +197,147 @@ void vizualizarCarros()
         printf("Modelo: %s\n", carros[i].modelo);
         printf("Ano: %d\n", carros[i].ano);
         printf("Placa: %s\n", carros[i].placa);
+        printf("-----------------------------\n");
+    }
+}
+
+Cliente clientes[MAX_CLIENTES];// Matriz dos clientes
+int totalClientes = 0;
+
+void menuClientes(){
+    int opc;
+    do
+    {
+        limparTela();
+        printf("\n==========CLIENTES==========\n");
+        printf("1. Vizualizar Cadastros\n");
+        printf("2. Incluir Cadastros\n");
+        printf("0. Voltar\n");
+        printf("\n==========================\n");
+        printf("\nOpcao: ");
+        scanf("%d", &opc);
+        getchar();
+
+        switch (opc)
+        {
+        case 1:
+            limparTela();
+            vizualizarClientes();
+            printf("\nPressione ENTER para voltar ao menu");
+            getchar();
+        
+            break;
+
+        case 2:
+            limparTela();
+            incluirClientes();
+            printf("\nPressione ENTER para voltar ao menu");
+            getchar();
+            break;
+
+        case 0:
+            limparTela();
+            printf("Voltando...\n");
+            break;
+        default:
+            printf("Opcao invalida\n");
+        }
+
+        if (opc != 0)
+        {
+            printf("\nPressione ENTER para continuar...");
+            getchar();
+            getchar();
+        }
+    } while (opc != 0);
+}
+
+void incluirClientes(){
+    limparTela();
+
+    
+
+    char nomeArquivoCli[TAM_LINHA];
+   // int totalClientes = 0;
+
+    printf("Digite o nome do arquivo de cadastro (ex: cliente_registro.txt): ");
+    scanf("%s", nomeArquivoCli);
+
+    // arquivo de entrada
+    FILE *arquivoEntrada = fopen(nomeArquivoCli, "r");
+    if (arquivoEntrada == NULL)
+    {
+        printf("ERRO: arquivo não encontrado");
+        return;
+    }
+
+    // criando o arquivo de confirmacoa
+    FILE *arquivoConfirmacao = fopen("cadastros_de_clientes_realizados.txt", "w");
+    fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
+
+    char linha[TAM_LINHA];
+    int linhaAtual = 0;
+    Cliente novoCliente;
+
+    while (fgets(linha, TAM_LINHA, arquivoEntrada) != NULL && totalClientes < MAX_CLIENTES)
+    {
+
+        linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
+
+        switch (linhaAtual % 4)
+        {
+        case 0:
+            strcpy(novoCliente.nome, linha);
+            break;
+        case 1:
+            strcpy(novoCliente.telefone, linha);    
+            break;
+        case 2:
+            strcpy(novoCliente.endereco, linha);
+            break;
+        case 3:
+            strcpy(novoCliente.CPF, linha);
+
+            // adiciona o carro à matriz
+            clientes[totalClientes] = novoCliente;
+
+            // escrevendo o arquivo de confirmacao
+            fprintf(arquivoConfirmacao, "Cliente %d:\n", totalClientes + 1);
+            fprintf(arquivoConfirmacao, "Nome: %s\n", novoCliente.nome);
+            fprintf(arquivoConfirmacao, "Telefone: %s\n", novoCliente.telefone);
+            fprintf(arquivoConfirmacao, "Endereco: %s\n", novoCliente.endereco);
+            fprintf(arquivoConfirmacao, "CPF: %s\n", novoCliente.CPF);
+            fprintf(arquivoConfirmacao, "-----------------------------\n\n");
+
+            totalClientes++;
+            break;
+        }
+        linhaAtual++;
+}
+
+    fclose(arquivoEntrada);
+    fclose(arquivoConfirmacao);
+
+    printf("\n%d clientes cadastrados com sucesso!\n", totalClientes);
+    printf("Detalhes salvos em: cadastros_de_clientes_realizados.txt\n");
+}
+
+void vizualizarClientes(){
+    limparTela();
+    if (totalClientes == 0)
+    {
+        printf("Nenhum Cadastro Efetuado!\n");
+        return;
+    }
+
+    printf("\n========== CLIENTES CADASTRADOS ==========\n");
+    for (int i = 0; i < totalClientes; i++)
+    {
+        printf("\nCientes %d:\n", i + 1);
+        printf("Nome: %s\n", clientes[i].nome);
+        printf("Telefone: %s\n", clientes[i].telefone);
+        printf("Endereco: %s\n", clientes[i].endereco);
+        printf("CPF: %s\n", clientes[i].CPF);
         printf("-----------------------------\n");
     }
 }

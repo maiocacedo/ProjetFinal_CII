@@ -22,6 +22,23 @@ typedef struct
 extern Carro carros[MAX_CARROS];
 extern int totalCarros;
 
+//?CLIENTES
+#define MAX_CLIENTES 100
+//#define TAM_LINHA 100
+
+//?estrutura clientes
+typedef struct
+{
+    char nome[TAM_LINHA];
+    char telefone[TAM_LINHA];
+    char endereco [TAM_LINHA];
+    char CPF [TAM_LINHA];
+} Cliente;
+
+//?variaveis globais clientes
+extern Cliente clientes [MAX_CLIENTES];
+extern int totalClientes;
+
 //! FUNCOES
 void boasVindas(); // exibe a mensagem de boas vindas
 
@@ -32,6 +49,12 @@ void menuCarros(); // menu para a aba carros
 void incluirCarros(); // funcao para realizar a inclusao de novos carros
 
 void vizualizarCarros(); // funcao para a vizualizaçao dos cadastros ja efetuados
+
+void menuClientes();//menu da opcao clientes
+
+void incluirClientes(); //funcao para fazer a inclusao de clientes
+
+void vizualizarClientes(); //funcao para vizualizar os cadastros de clientes ja realizados
 
 void limparTela(); // limpa a tela
 
