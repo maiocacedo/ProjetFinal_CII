@@ -1,9 +1,9 @@
 =======Cadastros Realizados Com Sucesso======
 
 Carro 1:
-Marca: omega turbo
-Modelo: caralho
-Ano: 1499
-Placa: MEUOVO123
+Marca: FIAT
+Modelo: PALIO TURBO 
+Ano: 1
+Placa: URSS369
 -----------------------------
 
