@@ -258,6 +258,9 @@ void darBaixaLocacoes()
     while (op != 0){
     limparTela();
     vizualizarLocacoes();
+    if(totalLocacoes == 0){
+        return;
+    }
     printf("Qual locacao deseja dar baixa? \n");
     scanf("%d", &op);
     Locacao temp;
