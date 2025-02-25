@@ -1,9 +1,9 @@
 =======Cadastros Realizados Com Sucesso======
 
 Cliente 1:
-Nome: Jose Lindo
-Telefone: (45)998436044
-Endereco: Sao clemente
-CPF: 198.669.071-81
+Nome: ciao
+Telefone: 5684684
+Endereco: ksuihbs
+CPF: 35161354
 -----------------------------
 
