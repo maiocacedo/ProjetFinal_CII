@@ -128,7 +128,7 @@ void incluirCarros()
     }
 
     // criando o arquivo de confirmacoa
-    FILE *arquivoConfirmacao = fopen("cadastros_realizados.txt", "w");
+    FILE *arquivoConfirmacao = fopen("cadastros_de_carros_realizados.txt", "w");
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     char linha[TAM_LINHA];
@@ -175,7 +175,7 @@ void incluirCarros()
     fclose(arquivoConfirmacao);
 
     printf("\n%d carros cadastrados com sucesso!\n", totalCarros);
-    printf("Comprovante salvo em: cadastros_realizados.txt\n");
+    printf("Comprovante salvo em: cadastros_de_carros_realizados.txt\n");
 }
 
 void vizualizarCarros()
