@@ -10,6 +10,9 @@ void boasVindas()
 
 void menuPrincipal()
 {
+    boasVindas();
+    getchar();
+
     int opc;
     do
     {
@@ -21,8 +24,10 @@ void menuPrincipal()
         printf("0_Sair \n");
         printf("========================\n");
         printf("\nOpcao: ");
-        scanf("%d", &opc);
-
+        if (scanf("%d", &opc) !=1){
+            limparBuffer();
+            opc = -1;
+        }
         switch (opc)
         {
         case 1:
@@ -47,6 +52,8 @@ void menuPrincipal()
             break;
         default:
             printf("Opcao indisponivel, Tente novamente. \n");
+            limparBuffer();
+
 #ifdef _WIN32
             Sleep(1000);
 #endif
@@ -69,7 +76,10 @@ void menuCarros()
         printf("0. Voltar\n");
         printf("\n==========================\n");
         printf("\nOpcao: ");
-        scanf("%d", &opc);
+        if (scanf("%d", &opc) != 1) {
+            limparBuffer ();
+            opc = -1;
+        }
 
         switch (opc)
         {
@@ -95,6 +105,7 @@ void menuCarros()
             break;
         default:
             printf("Opcao invalida\n");
+            limparBuffer();
 #ifdef _WIN32
             Sleep(1000); //timer de 1 segundo quando for dado uma opcao invalida
 #endif
@@ -247,8 +258,11 @@ void menuClientes()
         printf("0. Voltar\n");
         printf("\n==========================\n");
         printf("\nOpcao: ");
-        scanf("%d", &opc);
-        getchar();
+        if (scanf("%d", &opc) != 1) {
+            limparBuffer();
+            opc = -1;
+        }
+        
 
         switch (opc)
         {
@@ -271,6 +285,7 @@ void menuClientes()
             break;
         default:
             printf("Opcao invalida\n");
+            limparBuffer();
 #ifdef _WIN32
             Sleep(1000); // timer de 1 segundo apos dar uma opcao invalida
 #endif
@@ -408,4 +423,11 @@ void limparTela()
 #ifdef _WIN32
     system("cls");
 #endif
+}
+
+void limparBuffer()
+{
+
+    int b;
+    while ((b = getchar()) != '\n' && b != EOF);
 }

@@ -58,4 +58,6 @@ void vizualizarClientes(); //funcao para vizualizar os cadastros de clientes ja 
 
 void limparTela(); // limpa a tela
 
+void limparBuffer(); //funcao para limbar o scanf para tratar de entradas erradas
+
 #endif // FUNCOES_H
