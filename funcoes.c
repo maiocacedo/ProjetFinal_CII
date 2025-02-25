@@ -76,31 +76,34 @@ void menuLocacaoCarros()
         printf("0. Voltar\n");
         printf("\n==========================\n");
         printf("\nOpcao: ");
-        scanf("%d", &opc);
+        if(scanf("%d", &opc) != 1) {
+            limparBuffer();
+            opc = -1;
+        }
 
         switch (opc)
         {
         case 1:
             limparTela();
             vizualizarLocacoes();
-            printf("\nPressione ENTER para voltar ao menu");
-            getchar();
-            getchar();
+           // printf("\nPressione ENTER para voltar ao menu");
+            getchar();            
+
             break;
 
         case 2:
             limparTela();
             incluirLocacoes();
-            printf("\nPressione ENTER para voltar ao menu");
+            //printf("\nPressione ENTER para voltar ao menu");
             getchar();
-            getchar();
+            
             break;
         case 3:
             limparTela();
             darBaixaLocacoes();
-            printf("\nPressione ENTER para voltar ao menu");
+          //  printf("\nPressione ENTER para voltar ao menu");
             getchar();
-            getchar();
+            
             break;
         case 0:
             limparTela();
@@ -108,19 +111,24 @@ void menuLocacaoCarros()
             break;
         default:
             printf("Opcao invalida\n");
+            limparBuffer();
+            #ifdef _WIN32
+            Sleep (1000);
+            #endif
         }
 
         if (opc != 0)
         {
             printf("\nPressione ENTER para continuar...");
             getchar();
-            getchar();
+        
         }
     } while (opc != 0);
 }
 
 Locacao *locacoes; // Matriz das locacoes
 int totalLocacoes = 0;
+
 void incluirLocacoes()
 {
 
@@ -226,8 +234,6 @@ void incluirLocacoes()
     printf("\n%d locacoes cadastrados com sucesso!\n", totalLocacoes);
     printf("Comprovante salvo em: txt/Saidas/cadastros_de_locacoes_realizados.txt\n");
 }
-
-
 
 void vizualizarLocacoes()
 {
@@ -668,10 +674,11 @@ void limparTela()
 #endif
 }
 
-void limparMemoria()
+void limparMemoria() 
 {
     free(locacoes);
 }
+
 void limparBuffer()
 {
 
