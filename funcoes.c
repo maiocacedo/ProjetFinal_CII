@@ -27,8 +27,7 @@ void menuPrincipal()
         {
         case 1:
             limparTela();
-            printf("Locacao de Carros");
-
+            menuLocacaoCarros();
             break;
 
         case 2:
@@ -54,7 +53,56 @@ void menuPrincipal()
 }
 
 void menuLocacaoCarros()
-{
+{//? menu para a aba de locação de carros
+
+    int opc;
+    do
+    {
+       limparTela();
+        printf("\n==========LOCACAO DE CARROS==========\n");
+        printf("1. Vizualizar Locacoes\n");
+        printf("2. Incluir Locacoes\n");
+        printf("3. Dar baixa Locacoes\n");
+        printf("0. Voltar\n");
+        printf("\n==========================\n");
+        printf("\nOpcao: ");
+        scanf("%d", &opc);
+
+        switch (opc)
+        {
+        case 1:
+            limparTela();
+            // vizualizarLocacoes();
+            printf("\nPressione ENTER para voltar ao menu");
+            getchar();
+            getchar();
+            break;
+
+        case 2:
+            limparTela();
+           //incluirLocacoes();
+            printf("\nPressione ENTER para voltar ao menu");
+            getchar();
+            getchar();
+            break;
+
+        case 0:
+            limparTela();
+            printf("Voltando...\n");
+            break;
+        default:
+            printf("Opcao invalida\n");
+        }
+
+        if (opc != 0)
+        {
+            printf("\nPressione ENTER para continuar...");
+            getchar();
+            getchar();
+        }
+    } while (opc != 0);
+    
+
 }
 
 void menuCarros()

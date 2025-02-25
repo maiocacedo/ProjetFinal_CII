@@ -46,6 +46,8 @@ void menuPrincipal(); // exibe o menu principal
 
 void menuCarros(); // menu para a aba carros
 
+void menuLocacaoCarros(); // menu para a locacao de carros
+
 void incluirCarros(); // funcao para realizar a inclusao de novos carros
 
 void vizualizarCarros(); // funcao para a vizualizaçao dos cadastros ja efetuados
