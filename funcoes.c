@@ -116,11 +116,15 @@ void incluirCarros()
     limparTela();
     char nomeArquivo[TAM_LINHA];
 
-    printf("Digite o nome do arquivo de cadastro (ex: carros_registro.txt): ");
+    printf("Digite o nome do arquivo de cadastro (ex: carro_registro.txt): ");
     scanf("%s", nomeArquivo);
 
+    //modifica o caminho do arquivo de entrada
+    char caminhoArquivoEntrada[TAM_LINHA + 20];
+    snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivo);
+
     // arquivo de entrada
-    FILE *arquivoEntrada = fopen(nomeArquivo, "r");
+    FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
         printf("ERRO: arquivo não encontrado");
@@ -128,7 +132,7 @@ void incluirCarros()
     }
 
     // criando o arquivo de confirmacoa
-    FILE *arquivoConfirmacao = fopen("cadastros_de_carros_realizados.txt", "w");
+    FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_carros_realizados.txt", "w");
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     char linha[TAM_LINHA];
@@ -175,7 +179,7 @@ void incluirCarros()
     fclose(arquivoConfirmacao);
 
     printf("\n%d carros cadastrados com sucesso!\n", totalCarros);
-    printf("Comprovante salvo em: cadastros_de_carros_realizados.txt\n");
+    printf("Comprovante salvo em: txt/Saidas/cadastros_de_carros_realizados.txt\n");
 }
 
 void vizualizarCarros()
@@ -263,8 +267,12 @@ void incluirClientes(){
     printf("Digite o nome do arquivo de cadastro (ex: cliente_registro.txt): ");
     scanf("%s", nomeArquivoCli);
 
+    char caminhoArquivoEntrada[TAM_LINHA + 20];
+    snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivoCli);
+
+
     // arquivo de entrada
-    FILE *arquivoEntrada = fopen(nomeArquivoCli, "r");
+    FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
         printf("ERRO: arquivo não encontrado");
@@ -272,7 +280,7 @@ void incluirClientes(){
     }
 
     // criando o arquivo de confirmacoa
-    FILE *arquivoConfirmacao = fopen("cadastros_de_clientes_realizados.txt", "w");
+    FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_clientes_realizados.txt", "w");
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     char linha[TAM_LINHA];
@@ -319,7 +327,7 @@ void incluirClientes(){
     fclose(arquivoConfirmacao);
 
     printf("\n%d clientes cadastrados com sucesso!\n", totalClientes);
-    printf("Detalhes salvos em: cadastros_de_clientes_realizados.txt\n");
+    printf("Detalhes salvos em: txt/Saidas/cadastros_de_clientes_realizados.txt\n");
 }
 
 void vizualizarClientes(){
