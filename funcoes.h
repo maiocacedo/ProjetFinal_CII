@@ -35,9 +35,34 @@ typedef struct
     char CPF [TAM_LINHA];
 } Cliente;
 
+
+
 //?variaveis globais clientes
 extern Cliente clientes [MAX_CLIENTES]; //matriz global para armazer os cadastros de clientes
 extern int totalClientes; //variavel global para armazenar o total dos clientes
+
+//?estrutura data
+typedef struct{
+    int dia;
+    int mes;
+    int ano;
+}Data;
+
+//?estrutura locação
+typedef struct
+{
+
+    int codigoCliente;
+    int codigoCarro;
+    double valorLocacao;
+    Data dataLocacao;
+    Data dataDevolucao;
+    char status[TAM_LINHA];
+} Locacao;
+
+//?variaveis globais clientes
+extern Locacao *locacoes; //matriz global para armazenar os cadastros de locacoes
+extern int totalLocacoes; //variavel global para armazenar o total de locacoes
 
 //! FUNCOES
 void boasVindas(); // exibe a mensagem de boas vindas
@@ -45,6 +70,14 @@ void boasVindas(); // exibe a mensagem de boas vindas
 void menuPrincipal(); // exibe o menu principal
 
 void menuCarros(); // menu para a aba carros
+
+void menuLocacaoCarros(); // menu para a locacao de carros
+
+void incluirLocacoes(); // funcao para realizar a inclusao de locacoes
+
+void vizualizarLocacoes(); // funcao para a vizualizaçao das locacoes
+
+void darBaixaLocacoes(); // funcao para dar baixa nas locacoes
 
 void incluirCarros(); // funcao para realizar a inclusao de novos carros
 
@@ -59,5 +92,7 @@ void vizualizarClientes(); //funcao para vizualizar os cadastros de clientes ja 
 void limparTela(); // limpa a tela
 
 void limparBuffer(); //funcao para limbar o scanf para tratar de entradas erradas
+
+void limparMemoria(); // limpa o buffer do teclado
 
 #endif // FUNCOES_H
