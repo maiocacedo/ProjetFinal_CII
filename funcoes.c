@@ -33,12 +33,12 @@ void menuPrincipal()
 
         case 2:
             limparTela();
-            menuCarros();
+            menuCarros(); //chama a funcao de menu do modulo de carros
             break;
 
         case 3:
             limparTela();
-            menuClientes();
+            menuClientes(); //chama a funcao de menu do modulo de clientes
             break;
 
         case 0:
@@ -53,7 +53,7 @@ void menuPrincipal()
     } while (opc != 0);
 }
 
-void menuLocacaoCarros()
+void menuLocacaoCarros() //falta fazer
 {
 }
 
@@ -77,17 +77,17 @@ void menuCarros()
         case 1:
             limparTela();
             vizualizarCarros();
-            printf("\nPressione ENTER para voltar ao menu");
+            
             getchar();
-            getchar();
+        
             break;
 
         case 2:
             limparTela();
             incluirCarros();
-            printf("\nPressione ENTER para voltar ao menu");
+            
             getchar();
-            getchar();
+           
             break;
 
         case 0:
@@ -102,7 +102,7 @@ void menuCarros()
         {
             printf("\nPressione ENTER para continuar...");
             getchar();
-            getchar();
+            
         }
     } while (opc != 0);
 }
@@ -112,22 +112,21 @@ int totalCarros = 0;
 
 void incluirCarros()
 {
-
     limparTela();
     char nomeArquivo[TAM_LINHA];
 
-    printf("Digite o nome do arquivo de cadastro (ex: carro_registro.txt): ");
+    printf("Digite o nome do arquivo de cadastro (ex: carros_registro.txt): ");
     scanf("%s", nomeArquivo);
 
-    //modifica o caminho do arquivo de entrada
+    // Adiciona o caminho do arquivo de entrada
     char caminhoArquivoEntrada[TAM_LINHA + 20];
     snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivo);
 
-    // arquivo de entrada
+    // abre o arquivo
     FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
-        printf("ERRO: arquivo não encontrado");
+        printf("ERRO: arquivo nao encontrado");
         return;
     }
 
@@ -141,10 +140,9 @@ void incluirCarros()
 
     while (fgets(linha, TAM_LINHA, arquivoEntrada) != NULL && totalCarros < MAX_CARROS)
     {
-
         linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
 
-        switch (linhaAtual % 4)
+        switch (linhaAtual % 4) //usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
         {
         case 0:
             strcpy(novoCarro.marca, linha);
@@ -158,7 +156,7 @@ void incluirCarros()
         case 3:
             strcpy(novoCarro.placa, linha);
 
-            // adiciona o carro à matriz
+            // adiciona o carro a matriz
             carros[totalCarros] = novoCarro;
 
             // escrevendo o arquivo de confirmacao
@@ -227,7 +225,7 @@ void menuClientes(){
         case 1:
             limparTela();
             vizualizarClientes();
-            printf("\nPressione ENTER para voltar ao menu");
+            //printf("\nPressione ENTER para voltar ao menu");
             getchar();
         
             break;
@@ -235,7 +233,7 @@ void menuClientes(){
         case 2:
             limparTela();
             incluirClientes();
-            printf("\nPressione ENTER para voltar ao menu");
+            //printf("\nPressione ENTER para voltar ao menu");
             getchar();
             break;
 
@@ -250,7 +248,6 @@ void menuClientes(){
         if (opc != 0)
         {
             printf("\nPressione ENTER para continuar...");
-            getchar();
             getchar();
         }
     } while (opc != 0);
@@ -275,7 +272,7 @@ void incluirClientes(){
     FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
-        printf("ERRO: arquivo não encontrado");
+        printf("ERRO: arquivo nao encontrado");
         return;
     }
 
@@ -292,7 +289,7 @@ void incluirClientes(){
 
         linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
 
-        switch (linhaAtual % 4)
+        switch (linhaAtual % 4) //usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
         {
         case 0:
             strcpy(novoCliente.nome, linha);

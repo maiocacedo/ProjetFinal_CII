@@ -21,3 +21,26 @@ Ano: 8008
 Placa: asdea
 -----------------------------
 
+=======Cadastros Realizados Com Sucesso======
+
+Carro 1:
+Marca: FIAT
+Modelo: PALIO TURBO 
+Ano: 1
+Placa: URSS369
+-----------------------------
+
+Carro 2:
+Marca: chevrolete
+Modelo: omega
+Ano: 23
+Placa: maico
+-----------------------------
+
+Carro 3:
+Marca: osvaldo
+Modelo: aldo
+Ano: 8008
+Placa: asdea
+-----------------------------
+
