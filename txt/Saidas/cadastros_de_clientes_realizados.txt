@@ -1,6 +1,6 @@
 =======Cadastros Realizados Com Sucesso======
 
-Cliente 2:
+Cliente 1:
 Nome: ciao
 Telefone: 5684684
 Endereco: ksuihbs

@@ -33,3 +33,10 @@ Endereco: ksuihbs
 CPF: 35161354
 -----------------------------
 
+Cliente 1:
+Nome: ciao
+Telefone: 5684684
+Endereco: ksuihbs
+CPF: 35161354
+-----------------------------
+

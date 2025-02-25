@@ -116,7 +116,14 @@ void incluirCarros()
     limparTela();
     char nomeArquivo[TAM_LINHA];
 
-    printf("Digite o nome do arquivo de cadastro (ex: carros_registro.txt): ");
+    printf("Exemplo de formatacao para o arquivo de entrada:\n");
+    printf("\n> Marca: Fiat\n");
+    printf("> Modelo: Palio\n");
+    printf("> Ano: 2011\n");
+    printf("> Placa: ABC123\n");
+    printf("\nCOLOQUE NO ARQUIVO DE ENTRADA APENAS SOMENTE OS DADOS DO CARRO, CADA DADO EM UMA LINHA.\n");
+
+    printf("\nDigite o nome do arquivo de cadastro (ex: carros_registro.txt): ");
     scanf("%s", nomeArquivo);
 
     // Adiciona o caminho do arquivo de entrada
@@ -283,7 +290,14 @@ void incluirClientes()
 
     char nomeArquivoCli[TAM_LINHA];
 
-    printf("Digite o nome do arquivo de cadastro (ex: cliente_registro.txt): ");
+    printf("Exemplo de formatacao para o arquivo de entrada:\n");
+    printf("\n> Nome: jose\n");
+    printf("> Telefone: (42) 9984-2578\n");
+    printf("> Endereco: Rua Sao Paulo\n");
+    printf("> CPF: 189.005.302-64\n");
+    printf("\nCOLOQUE NO ARQUIVO DE ENTRADA APENAS SOMENTE OS DADOS DO CLIENTE, CADA DADO EM UMA LINHA.\n");
+
+    printf("\nDigite o nome do arquivo de cadastro (ex: cliente_registro.txt): ");
     scanf("%s", nomeArquivoCli);
 
     char caminhoArquivoEntrada[TAM_LINHA + 20];
