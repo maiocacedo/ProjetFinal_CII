@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 
 //?CARRO
 #define MAX_CARROS 100
@@ -19,12 +20,11 @@ typedef struct
 } Carro;
 
 //?variaveis globais carros
-extern Carro carros[MAX_CARROS];
-extern int totalCarros;
+extern Carro carros[MAX_CARROS]; //matriz global para armazenar os cadastros de carros
+extern int totalCarros; //variavel global para armazenar o total de carros
 
 //?CLIENTES
 #define MAX_CLIENTES 100
-//#define TAM_LINHA 100
 
 //?estrutura clientes
 typedef struct
@@ -36,8 +36,8 @@ typedef struct
 } Cliente;
 
 //?variaveis globais clientes
-extern Cliente clientes [MAX_CLIENTES];
-extern int totalClientes;
+extern Cliente clientes [MAX_CLIENTES]; //matriz global para armazer os cadastros de clientes
+extern int totalClientes; //variavel global para armazenar o total dos clientes
 
 //! FUNCOES
 void boasVindas(); // exibe a mensagem de boas vindas

@@ -32,12 +32,12 @@ void menuPrincipal()
 
         case 2:
             limparTela();
-            menuCarros();
+            menuCarros(); // chama a funcao de menu do modulo de carros
             break;
 
         case 3:
             limparTela();
-            menuClientes();
+            menuClientes(); // chama a funcao de menu do modulo de clientes
             break;
 
         case 0:
@@ -46,7 +46,10 @@ void menuPrincipal()
             break;
         default:
             printf("Opcao indisponivel, Tente novamente. \n");
-            getchar();
+#ifdef _WIN32
+            Sleep(1000);
+#endif
+
             getchar();
         }
     } while (opc != 0);
@@ -125,17 +128,17 @@ void menuCarros()
         case 1:
             limparTela();
             vizualizarCarros();
-            printf("\nPressione ENTER para voltar ao menu");
+
             getchar();
-            getchar();
+
             break;
 
         case 2:
             limparTela();
             incluirCarros();
-            printf("\nPressione ENTER para voltar ao menu");
+
             getchar();
-            getchar();
+
             break;
 
         case 0:
@@ -144,12 +147,14 @@ void menuCarros()
             break;
         default:
             printf("Opcao invalida\n");
+#ifdef _WIN32
+            Sleep(1000); //timer de 1 segundo quando for dado uma opcao invalida
+#endif
         }
 
         if (opc != 0)
         {
             printf("\nPressione ENTER para continuar...");
-            getchar();
             getchar();
         }
     } while (opc != 0);
@@ -160,23 +165,26 @@ int totalCarros = 0;
 
 void incluirCarros()
 {
-
     limparTela();
     char nomeArquivo[TAM_LINHA];
 
     printf("Digite o nome do arquivo de cadastro (ex: carros_registro.txt): ");
     scanf("%s", nomeArquivo);
 
-    // arquivo de entrada
-    FILE *arquivoEntrada = fopen(nomeArquivo, "r");
+    // Adiciona o caminho do arquivo de entrada
+    char caminhoArquivoEntrada[TAM_LINHA + 20];
+    snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivo);
+
+    // abre o arquivo
+    FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
-        printf("ERRO: arquivo não encontrado");
+        printf("ERRO: arquivo nao encontrado");
         return;
     }
 
     // criando o arquivo de confirmacoa
-    FILE *arquivoConfirmacao = fopen("cadastros_realizados.txt", "w");
+    FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_carros_realizados.txt", "w");
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     char linha[TAM_LINHA];
@@ -185,10 +193,9 @@ void incluirCarros()
 
     while (fgets(linha, TAM_LINHA, arquivoEntrada) != NULL && totalCarros < MAX_CARROS)
     {
-
         linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
 
-        switch (linhaAtual % 4)
+        switch (linhaAtual % 4) // usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
         {
         case 0:
             strcpy(novoCarro.marca, linha);
@@ -202,7 +209,7 @@ void incluirCarros()
         case 3:
             strcpy(novoCarro.placa, linha);
 
-            // adiciona o carro à matriz
+            // adiciona o carro a matriz
             carros[totalCarros] = novoCarro;
 
             // escrevendo o arquivo de confirmacao
@@ -223,7 +230,7 @@ void incluirCarros()
     fclose(arquivoConfirmacao);
 
     printf("\n%d carros cadastrados com sucesso!\n", totalCarros);
-    printf("Comprovante salvo em: cadastros_realizados.txt\n");
+    printf("Comprovante salvo em: txt/Saidas/cadastros_de_carros_realizados.txt\n");
 }
 
 void vizualizarCarros()
@@ -249,10 +256,11 @@ void vizualizarCarros()
     }
 }
 
-Cliente clientes[MAX_CLIENTES];// Matriz dos clientes
+Cliente clientes[MAX_CLIENTES]; // Matriz dos clientes
 int totalClientes = 0;
 
-void menuClientes(){
+void menuClientes()
+{
     int opc;
     do
     {
@@ -271,15 +279,15 @@ void menuClientes(){
         case 1:
             limparTela();
             vizualizarClientes();
-            printf("\nPressione ENTER para voltar ao menu");
+            // printf("\nPressione ENTER para voltar ao menu");
             getchar();
-        
+
             break;
 
         case 2:
             limparTela();
             incluirClientes();
-            printf("\nPressione ENTER para voltar ao menu");
+            // printf("\nPressione ENTER para voltar ao menu");
             getchar();
             break;
 
@@ -289,38 +297,42 @@ void menuClientes(){
             break;
         default:
             printf("Opcao invalida\n");
+#ifdef _WIN32
+            Sleep(1000); // timer de 1 segundo apos dar uma opcao invalida
+#endif
         }
 
         if (opc != 0)
         {
             printf("\nPressione ENTER para continuar...");
             getchar();
-            getchar();
         }
     } while (opc != 0);
 }
 
-void incluirClientes(){
+void incluirClientes()
+{
     limparTela();
 
-    
-
     char nomeArquivoCli[TAM_LINHA];
-   // int totalClientes = 0;
+    // int totalClientes = 0;
 
     printf("Digite o nome do arquivo de cadastro (ex: cliente_registro.txt): ");
     scanf("%s", nomeArquivoCli);
 
+    char caminhoArquivoEntrada[TAM_LINHA + 20];
+    snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivoCli);
+
     // arquivo de entrada
-    FILE *arquivoEntrada = fopen(nomeArquivoCli, "r");
+    FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
-        printf("ERRO: arquivo não encontrado");
+        printf("ERRO: arquivo nao encontrado");
         return;
     }
 
     // criando o arquivo de confirmacoa
-    FILE *arquivoConfirmacao = fopen("cadastros_de_clientes_realizados.txt", "w");
+    FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_clientes_realizados.txt", "w");
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     char linha[TAM_LINHA];
@@ -332,13 +344,13 @@ void incluirClientes(){
 
         linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
 
-        switch (linhaAtual % 4)
+        switch (linhaAtual % 4) // usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
         {
         case 0:
             strcpy(novoCliente.nome, linha);
             break;
         case 1:
-            strcpy(novoCliente.telefone, linha);    
+            strcpy(novoCliente.telefone, linha);
             break;
         case 2:
             strcpy(novoCliente.endereco, linha);
@@ -361,16 +373,17 @@ void incluirClientes(){
             break;
         }
         linhaAtual++;
-}
+    }
 
     fclose(arquivoEntrada);
     fclose(arquivoConfirmacao);
 
     printf("\n%d clientes cadastrados com sucesso!\n", totalClientes);
-    printf("Detalhes salvos em: cadastros_de_clientes_realizados.txt\n");
+    printf("Detalhes salvos em: txt/Saidas/cadastros_de_clientes_realizados.txt\n");
 }
 
-void vizualizarClientes(){
+void vizualizarClientes()
+{
     limparTela();
     if (totalClientes == 0)
     {

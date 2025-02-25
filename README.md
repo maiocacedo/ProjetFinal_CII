@@ -1,3 +1,1 @@
-Programa para locação de carros, onde o usuario tera um menu completo de ações
-para cada funcionalidade do sistema, buscando entregar uma experiencia completa
-mas também simples para facilitar ao maximo o uso do sistema.
+Programa para locação de carros, onde o usuário terá um menu completo de ações para cada funcionalidade do sistema, entregando um controle completo do sistame, mas também simples, proporcionando uma experiência agradável ao usuário.

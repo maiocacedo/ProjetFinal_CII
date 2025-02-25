@@ -6,9 +6,7 @@ int main(void)
 {
 
     boasVindas();
-
-    getchar();
-
+    
     limparTela();
     menuPrincipal();
 

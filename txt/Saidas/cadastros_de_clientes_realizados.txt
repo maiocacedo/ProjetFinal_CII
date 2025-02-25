@@ -1,7 +1,7 @@
 =======Cadastros Realizados Com Sucesso======
 
 Cliente 1:
-Nome: José Lindo
+Nome: Jose Lindo
 Telefone: (45)998436044
 Endereco: Sao clemente
 CPF: 198.669.071-81
