@@ -56,12 +56,12 @@ void menuPrincipal()
 }
 
 void menuLocacaoCarros()
-{//? menu para a aba de locação de carros
+{ // menu para a aba de locação de carros
 
     int opc;
     do
     {
-       limparTela();
+        limparTela();
         printf("\n==========LOCACAO DE CARROS==========\n");
         printf("1. Vizualizar Locacoes\n");
         printf("2. Incluir Locacoes\n");
@@ -75,7 +75,7 @@ void menuLocacaoCarros()
         {
         case 1:
             limparTela();
-            // vizualizarLocacoes();
+            vizualizarLocacoes();
             printf("\nPressione ENTER para voltar ao menu");
             getchar();
             getchar();
@@ -83,12 +83,18 @@ void menuLocacaoCarros()
 
         case 2:
             limparTela();
-           //incluirLocacoes();
+            incluirLocacoes();
             printf("\nPressione ENTER para voltar ao menu");
             getchar();
             getchar();
             break;
-
+        case 3:
+            limparTela();
+            darBaixaLocacoes();
+            printf("\nPressione ENTER para voltar ao menu");
+            getchar();
+            getchar();
+            break;
         case 0:
             limparTela();
             printf("Voltando...\n");
@@ -104,9 +110,191 @@ void menuLocacaoCarros()
             getchar();
         }
     } while (opc != 0);
-    
-
 }
+
+Locacao *locacoes; // Matriz das locacoes
+int totalLocacoes = 0;
+void incluirLocacoes()
+{
+
+    if(totalCarros == 0 && totalClientes == 0){printf("Nao ha carros ou clientes cadastrados\n");return;}
+    if(totalClientes == 0){printf("Nao ha clientes cadastrados\n");return;}
+    if(totalCarros == 0 ){printf("Nao ha carros cadastrados\n");return;}
+
+
+    locacoes = (Locacao*)malloc((totalLocacoes+1)*sizeof(Locacao));
+    char nomeArquivo[TAM_LINHA];
+    limparTela();
+    printf("Digite o nome do arquivo de cadastro (ex: locacao_registro.txt): ");
+    scanf("%s", nomeArquivo);
+
+    // Adiciona o caminho do arquivo de entrada
+    char caminhoArquivoEntrada[TAM_LINHA + 20];
+    snprintf(caminhoArquivoEntrada, sizeof(caminhoArquivoEntrada), "txt/Entradas/%s", nomeArquivo);
+
+    // abre o arquivo
+    FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
+    if (arquivoEntrada == NULL)
+    {
+        printf("ERRO: arquivo nao encontrado");
+        return;
+    }
+
+    // criando o arquivo de confirmacao
+    FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_locacoes_realizados.txt", "w");
+    fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
+
+    char linha[TAM_LINHA];
+    int linhaAtual = 0;
+    Locacao *temp = locacoes;
+    Locacao novaLocacao;
+    while (fgets(linha, TAM_LINHA, arquivoEntrada) != NULL )
+    {
+        linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
+        
+
+        switch (linhaAtual % 6) // usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
+        {
+        case 0:
+            if (atoi(linha) > totalCarros)
+            {
+                printf("Carro %d nao cadastrado\n", atoi(linha));
+                return;
+            }
+            novaLocacao.codigoCarro = atoi(linha);
+            break;
+        case 1:
+            if (atoi(linha) > totalClientes)
+            {
+                printf("Cliente %d nao cadastrado\n", atoi(linha));
+                return;
+            }
+            novaLocacao.codigoCliente = atoi(linha);
+            break;
+        case 2:
+            novaLocacao.valorLocacao = atof(linha);
+            break;
+        case 3:
+            sscanf(linha, "%d/%d/%d", &novaLocacao.dataLocacao.dia, &novaLocacao.dataLocacao.mes, &novaLocacao.dataLocacao.ano);
+            break;
+        case 4:
+            sscanf(linha, "%d/%d/%d", &novaLocacao.dataDevolucao.dia, &novaLocacao.dataDevolucao.mes, &novaLocacao.dataDevolucao.ano);        
+            break;
+        case 5:
+            strcpy(novaLocacao.status, linha);
+            temp = (Locacao *)realloc(locacoes, sizeof(*temp) * (totalLocacoes + 1));
+            if (temp != NULL)
+            {
+                locacoes = temp;
+                locacoes[totalLocacoes] = novaLocacao;
+    
+                // escrevendo o arquivo de confirmacao
+                fprintf(arquivoConfirmacao, "Locacao %d:\n", totalLocacoes + 1);
+                fprintf(arquivoConfirmacao, "Codigo do carro: %d\n", novaLocacao.codigoCarro);
+                fprintf(arquivoConfirmacao, "Codigo do cliente: %d\n", novaLocacao.codigoCliente);
+                fprintf(arquivoConfirmacao, "Valor da Locacao: %.2f\n", novaLocacao.valorLocacao);
+                fprintf(arquivoConfirmacao, "Data da Locacao: %d/%d/%d\n", novaLocacao.dataLocacao.dia, novaLocacao.dataLocacao.mes, novaLocacao.dataLocacao.ano);
+                fprintf(arquivoConfirmacao, "Data da Devolucao: %d/%d/%d\n", novaLocacao.dataDevolucao.dia, novaLocacao.dataDevolucao.mes, novaLocacao.dataDevolucao.ano);
+                fprintf(arquivoConfirmacao, "Status: %s\n", novaLocacao.status);
+                fprintf(arquivoConfirmacao, "-----------------------------\n\n");
+    
+                totalLocacoes++;
+                break;
+            }
+            else
+            {
+                printf("Erro ao alocar memoria\n");
+                fclose(arquivoEntrada);
+                fclose(arquivoConfirmacao);
+                return;
+            }
+        }
+        
+        linhaAtual++;
+    }
+
+    fclose(arquivoEntrada);
+    fclose(arquivoConfirmacao);
+
+    printf("\n%d locacoes cadastrados com sucesso!\n", totalLocacoes);
+    printf("Comprovante salvo em: txt/Saidas/cadastros_de_locacoes_realizados.txt\n");
+}
+
+
+
+void vizualizarLocacoes()
+{
+    limparTela();
+    if (totalLocacoes == 0)
+    {
+        printf("Nenhuma Locacao Ativa!\n");
+        return;
+    }
+
+    printf("\n========== LOCACOES CADASTRADAS ==========\n");
+    for (int i = 0; i < totalLocacoes; i++)
+    {
+        printf("\nLocacao %d:\n", i + 1);
+        printf("ID Cliente %d\n", locacoes[i].codigoCliente);
+        printf("ID Carro: %d\n", locacoes[i].codigoCarro);
+        printf("Valor da Locacao %.2f\n", locacoes[i].valorLocacao);
+        printf("Data de Locacao: %d/%d/%d\n", locacoes[i].dataLocacao.dia, locacoes[i].dataLocacao.mes, locacoes[i].dataLocacao.ano);
+        printf("Data de Devolucao: %d/%d/%d\n", locacoes[i].dataDevolucao.dia, locacoes[i].dataDevolucao.mes, locacoes[i].dataDevolucao.ano);
+        printf("Status: %s\n", locacoes[i].status);
+        printf("-----------------------------\n");
+    }
+}
+
+void darBaixaLocacoes()
+{
+    int op=1;
+    while (op != 0){
+    limparTela();
+    vizualizarLocacoes();
+    printf("Qual locacao deseja dar baixa? \n");
+    scanf("%d", &op);
+    Locacao temp;
+
+    temp = locacoes[op];
+    locacoes[op] = locacoes[totalLocacoes-1];
+    locacoes[totalLocacoes-1] = temp;
+
+    totalLocacoes--;
+    printf("Deseja dar baixa em outra locacao? \n0.Nao \n1.Sim\n");
+    scanf("%d", &op);
+}
+    system("cls");
+    for(int i = 0; i<totalLocacoes; i++){
+        printf("\nLocacao %d:\n", i + 1);
+        printf("ID Cliente %d\n", locacoes[i].codigoCliente);
+        printf("ID Carro: %d\n", locacoes[i].codigoCarro);
+        printf("Valor da Locacao %.2f\n", locacoes[i].valorLocacao);
+        printf("Data de Locacao: %d/%d/%d\n", locacoes[i].dataLocacao.dia, locacoes[i].dataLocacao.mes, locacoes[i].dataLocacao.ano);
+        printf("Data de Devolucao: %d/%d/%d\n", locacoes[i].dataDevolucao.dia, locacoes[i].dataDevolucao.mes, locacoes[i].dataDevolucao.ano);
+        printf("Status: %s\n", locacoes[i].status);
+        printf("-----------------------------\n");
+
+        FILE *arquivoConfirmacao = fopen("txt/Saidas/cadastros_de_locacoes_realizados.txt", "w");
+        fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
+        // escrevendo o arquivo de confirmacao
+        fprintf(arquivoConfirmacao, "Locacao %d:\n", totalLocacoes + 1);
+        fprintf(arquivoConfirmacao, "Codigo do carro: %d\n", locacoes[i].codigoCarro);
+        fprintf(arquivoConfirmacao, "Codigo do cliente: %d\n", locacoes[i].codigoCliente);
+        fprintf(arquivoConfirmacao, "Valor da Locacao: %.2f\n", locacoes[i].valorLocacao);
+        fprintf(arquivoConfirmacao, "Data da Locacao: %d/%d/%d\n", locacoes[i].dataLocacao.dia, locacoes[i].dataLocacao.mes, locacoes[i].dataLocacao.ano);
+        fprintf(arquivoConfirmacao, "Data da Devolucao: %d/%d/%d\n", locacoes[i].dataDevolucao.dia, locacoes[i].dataDevolucao.mes, locacoes[i].dataDevolucao.ano);
+        fprintf(arquivoConfirmacao, "Status: %s\n", locacoes[i].status);
+        fprintf(arquivoConfirmacao, "-----------------------------\n\n");
+    }
+    system("PAUSE");
+    printf("Retornando ao menu");
+    for(int i = 0; i<3; i++){
+        Sleep(300);
+        printf(".");
+    }
+    printf("Dar Baixa\n");
+}
+
 
 void menuCarros()
 { // menu para a aba de carros
@@ -148,7 +336,7 @@ void menuCarros()
         default:
             printf("Opcao invalida\n");
 #ifdef _WIN32
-            Sleep(1000); //timer de 1 segundo quando for dado uma opcao invalida
+            Sleep(1000); // timer de 1 segundo quando for dado uma opcao invalida
 #endif
         }
 
@@ -408,4 +596,8 @@ void limparTela()
 #ifdef _WIN32
     system("cls");
 #endif
+}
+void limparMemoria()
+{
+    free(locacoes);
 }
