@@ -3,16 +3,9 @@ Codigo do cliente: 1
 Valor da locacao: 34,00
 Data da locacao: 14/12/2024
 Data de devolucao: 17/12/2024
-Status: Ativa
-Codigo do carro: 1
-Codigo do cliente: 1
-Valor da locacao: 34,00
-Data da locacao: 14/12/2024
-Data de devolucao: 17/12/2024
-Status: Ativa
-Codigo do carro: 1
-Codigo do cliente: 1
-Valor da locacao: 34,00
-Data da locacao: 14/12/2024
-Data de devolucao: 17/12/2024
+Status: AtivaCodigo do carro: 2
+Codigo do cliente: 2
+Valor da locacao: 40,00
+Data da locacao: 26/2/2025
+Data da devolucao: 15/13/2025
 Status: Ativa

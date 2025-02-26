@@ -14,8 +14,6 @@ int totalClientes = 0;
 int totalCarros = 0;
 
 
-
-//! Se achar que for dar muito trampo pra adaptar, pode tirar essa função daí a gente deixa sem os cadastros totais como fonte de dados
 void lerCadastroTotal(){
     // Abre o arquivo de todos os cadastros no modo de adição
     FILE *arquivoTotaisCarros = fopen("txt/CadastrosTotais/todos_os_carros.txt", "r");
@@ -173,11 +171,6 @@ void lerCadastroTotal(){
     fclose(arquivoTotaisLocacoes);
 }
 
-
-
-
-
-
 void menuPrincipal()
 {
     limparTela();
@@ -254,7 +247,6 @@ void menuLocacaoCarros()
         printf("\nDigite a opção a seguir: ");
         if (scanf("%d", &opc) != 1)
         {
-            //limparBuffer();
             opc = -1;
         }
 
@@ -299,12 +291,12 @@ void menuLocacaoCarros()
 #endif
         }
 
-        // if (opc != 0)
-        // {
-        //     printf("Pressione %sENTER%s para continuar", WHTBG, RESET);
-        //     pontinhos();
-        //     getchar();
-        // }
+        //if (opc != 0)
+      //  {
+            //printf("Pressione %sENTER%s para continuar", WHTBG, RESET);
+           // pontinhos();
+            //getchar();
+      //  }
 
     } while (opc != 0);
 }

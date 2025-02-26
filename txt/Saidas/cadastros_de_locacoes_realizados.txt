@@ -1,11 +1,11 @@
 =======Cadastros Realizados Com Sucesso======
 
-Locação 3:
-Código do carro: 1
-Código do cliente: 1
-Valor da locação: 34,00
-Data da locação: 14/12/2024
-Data de devolução: 17/12/2024
+Locação 2:
+Código do carro: 2
+Código do cliente: 2
+Valor da locação: 40,00
+Data da locação: 26/2/2025
+Data da devolução: 15/13/2025
 Status: Ativa
 -----------------------------
 
