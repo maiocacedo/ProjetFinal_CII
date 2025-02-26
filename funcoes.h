@@ -67,6 +67,10 @@ extern int totalLocacoes; //variavel global para armazenar o total de locacoes
 //! FUNCOES
 void boasVindas(); // exibe a mensagem de boas vindas
 
+void pontinhos(); // exibe os três pontinhos...
+
+void lerCadastroTotal(); // le os cadastros totais
+
 void menuPrincipal(); // exibe o menu principal
 
 void menuCarros(); // menu para a aba carros
