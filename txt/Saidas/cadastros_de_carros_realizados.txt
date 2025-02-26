@@ -1,9 +1,9 @@
-=======Cadastros Realizados Com Sucesso======
+=======Cadastros realizados com [32msucesso[0m!======
 
-Carro 4:
-Marca: chevrolete
-Modelo: camaro
-Ano: 2015
-Placa: fgc888
+Carro 2:
+Marca: Chevrolet
+Modelo: Chevy 500
+Ano: 1978
+Placa: NMD065
 -----------------------------
 
