@@ -50,14 +50,14 @@ void menuPrincipal()
             printf("Saindo...\n");
             break;
         default:
-            printf("Opcao indisponivel, Tente novamente. \n");
+            printf("Opcao indisponivel, Precione ENTER para contiuar... \n");
             limparBuffer();
 
-#ifdef _WIN32
-            Sleep(1000);
+#ifdef _WIN322
+            Sleep(500);
 #endif
 
-            getchar();
+            //getchar();
         }
     } while (opc != 0);
 }
@@ -77,7 +77,6 @@ void menuLocacaoCarros()
         printf("\n==========================\n");
         printf("\nOpcao: ");
         if(scanf("%d", &opc) != 1) {
-            limparBuffer();
             opc = -1;
         }
 
@@ -86,7 +85,7 @@ void menuLocacaoCarros()
         case 1:
             limparTela();
             vizualizarLocacoes();
-           // printf("\nPressione ENTER para voltar ao menu");
+           
             getchar();            
 
             break;
@@ -94,14 +93,14 @@ void menuLocacaoCarros()
         case 2:
             limparTela();
             incluirLocacoes();
-            //printf("\nPressione ENTER para voltar ao menu");
+           
             getchar();
             
             break;
         case 3:
             limparTela();
             darBaixaLocacoes();
-          //  printf("\nPressione ENTER para voltar ao menu");
+          
             getchar();
             
             break;
@@ -113,13 +112,13 @@ void menuLocacaoCarros()
             printf("Opcao invalida\n");
             limparBuffer();
             #ifdef _WIN32
-            Sleep (1000);
+            Sleep (500);
             #endif
         }
 
         if (opc != 0)
         {
-            printf("\nPressione ENTER para continuar...");
+            printf("Pressione ENTER para continuar...");
             getchar();
         
         }
@@ -323,7 +322,6 @@ void menuCarros()
         printf("\n==========================\n");
         printf("\nOpcao: ");
         if (scanf("%d", &opc) != 1) {
-            limparBuffer ();
             opc = -1;
         }
 
@@ -353,13 +351,13 @@ void menuCarros()
             printf("Opcao invalida\n");
             limparBuffer();
 #ifdef _WIN32
-            Sleep(1000); // timer de 1 segundo quando for dado uma opcao invalida
+            Sleep(500); // timer de 1 segundo quando for dado uma opcao invalida
 #endif
         }
 
         if (opc != 0)
         {
-            printf("\nPressione ENTER para continuar...");
+            printf("Pressione ENTER para continuar...");
             getchar();
         }
     } while (opc != 0);
@@ -391,7 +389,7 @@ void incluirCarros()
     FILE *arquivoEntrada = fopen(caminhoArquivoEntrada, "r");
     if (arquivoEntrada == NULL)
     {
-        printf("ERRO: arquivo nao encontrado");
+        printf("ERRO: arquivo nao encontrado. \n");
         return;
     }
 
@@ -505,7 +503,6 @@ void menuClientes()
         printf("\n==========================\n");
         printf("\nOpcao: ");
         if (scanf("%d", &opc) != 1) {
-            limparBuffer();
             opc = -1;
         }
         
@@ -533,13 +530,13 @@ void menuClientes()
             printf("Opcao invalida\n");
             limparBuffer();
 #ifdef _WIN32
-            Sleep(1000); // timer de 1 segundo apos dar uma opcao invalida
+            Sleep(500); // timer de 1 segundo apos dar uma opcao invalida
 #endif
         }
 
         if (opc != 0)
         {
-            printf("\nPressione ENTER para continuar...");
+            printf("Pressione ENTER para continuar...");
             getchar();
         }
     } while (opc != 0);
