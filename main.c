@@ -2,6 +2,7 @@
 
 int main(void)
 {
+    limparTela();
     menuPrincipal();
     limparMemoria();
 

@@ -93,4 +93,6 @@ void limparBuffer(); // funcao para limbar o scanf para tratar de entradas errad
 
 void limparMemoria(); // limpa o buffer do teclado
 
+void pontinhos(); // funcao para printar diversos pontos
+
 #endif // FUNCOES_H

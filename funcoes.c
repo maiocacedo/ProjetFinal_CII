@@ -69,6 +69,7 @@ void menuLocacaoCarros()
     int opc;
     do
     {
+        limparTela();
         printf("\n==========LOCACAO DE CARROS==========\n");
         printf("1. Vizualizar Locacoes\n");
         printf("2. Incluir Locacoes\n");
@@ -131,9 +132,12 @@ void menuLocacaoCarros()
 }
 
 Locacao *locacoes; // Matriz das locacoes
+int totalLocacoes = 0;
 
 void incluirLocacoes()
 {
+    limparTela();
+
     // Verificando se há carros e clientes cadastrados
     if (totalCarros == 0 && totalClientes == 0)
     {
@@ -160,7 +164,16 @@ void incluirLocacoes()
 
     char nomeArquivo[TAM_LINHA];
     limparTela();
-    printf("Digite o nome do arquivo de cadastro (ex: locacao_registro.txt): "); // Solicita o nome do arquivo de entrada
+    printf("Exemplo de formatacao para o arquivo de entrada:\n");
+    printf("\n> Codigo do carro: 123\n");
+    printf("> Codigo do cliente: 123\n");
+    printf("> Valor da locacao: 99.99\n");
+    printf("> Data da locacao: 01/01/2000\n");
+    printf("> Data da devolucao: 07/01/2000\n");
+    printf("> Status: Ativa");
+    printf("\nCOLOQUE NO ARQUIVO DE ENTRADA APENAS SOMENTE OS DADOS DO CARRO, CADA DADO EM UMA LINHA.\n");
+
+    printf("\nDigite o nome do arquivo de cadastro (ex: locacao_registro.txt): "); // Solicita o nome do arquivo de entrada
     scanf("%s", nomeArquivo);
 
     // Adiciona o caminho do arquivo de entrada
@@ -180,7 +193,15 @@ void incluirLocacoes()
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
 
     // criando o arquivo de confirmacao
-    FILE *arquivoTotais = fopen("txt/Saidas/cadastros_de_locacoes_realizados.txt", "w");
+    // FILE *arquivoTotais = fopen("txt/Saidas/cadastros_de_locacoes_realizados.txt", "w");
+    FILE *arquivoTotais = fopen("txt/CadastrosTotais/todas_as_locacoes.txt", "a");
+    if (arquivoTotais == NULL)
+    {
+        printf("ERRO: nao foi possivel abrir o arquivo de todos os cadastros");
+        fclose(arquivoEntrada);
+        fclose(arquivoConfirmacao);
+        return;
+    }
 
     char linha[TAM_LINHA];
     int linhaAtual = 0;
@@ -191,7 +212,7 @@ void incluirLocacoes()
     {
         linha[strcspn(linha, "\n")] = '\0'; // remove quebra de linha
 
-        switch (linhaAtual % 6) // usa as quatro primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
+        switch (linhaAtual % 6) // usa as seis primeiras linhas para adicionar um novo cadastro na formataçao do arquivo de entrada
         {
         case 0:
             // verificando se o carro existe
@@ -201,7 +222,8 @@ void incluirLocacoes()
                 fclose(arquivoEntrada);
                 return;
             }
-            sscanf(linha, "Codigo Carro: %d", &novaLocacao.codigoCarro); // adiciona o codigo do carro
+            // sscanf(linha, "Codigo Carro: %d", &novaLocacao.codigoCarro); // adiciona o codigo do carro
+            novaLocacao.codigoCarro = atoi(linha);
             break;
 
         case 1:
@@ -212,24 +234,31 @@ void incluirLocacoes()
                 fclose(arquivoEntrada);
                 return;
             }
-            sscanf(linha, "Codigo Cliente: %d", &novaLocacao.codigoCliente); // adiciona o codigo do cliente
+            // sscanf(linha, "Codigo Cliente: %d", &novaLocacao.codigoCliente); // adiciona o codigo do cliente
+            novaLocacao.codigoCliente = atoi(linha);
             break;
 
         case 2:
-            sscanf(linha, "Valor da locacao: %lf", &novaLocacao.valorLocacao); // adiciona o valor da locacao
+            // sscanf(linha, "Valor da locacao: %lf", &novaLocacao.valorLocacao); // adiciona o valor da locacao
+            novaLocacao.valorLocacao = atof(linha);
             break;
 
+        // adiciona a data da locacao
         case 3:
-            sscanf(linha, "Data da locacao: %d/%d/%d", &novaLocacao.dataLocacao.dia, &novaLocacao.dataLocacao.mes, &novaLocacao.dataLocacao.ano); // adiciona a data da locacao
+            // sscanf(linha, "Data de locacao: %d/%d/%d", &novaLocacao.dataLocacao.dia, &novaLocacao.dataLocacao.mes, &novaLocacao.dataLocacao.ano); // adiciona a data da locacao
+            sscanf(linha, "%d/%d/%d", &novaLocacao.dataLocacao.dia, &novaLocacao.dataLocacao.mes, &novaLocacao.dataLocacao.ano); // adiciona a data da locacao
             break;
 
+        // adiciona a data de devolucao
         case 4:
-            sscanf(linha, "Data de Devolucao: %d/%d/%d", &novaLocacao.dataDevolucao.dia, &novaLocacao.dataDevolucao.mes, &novaLocacao.dataDevolucao.ano); // adiciona a data de devolucao
+            // sscanf(linha, "Data de devolucao: %d/%d/%d", &novaLocacao.dataDevolucao.dia, &novaLocacao.dataDevolucao.mes, &novaLocacao.dataDevolucao.ano); // adiciona a data de devolucao
+            sscanf(linha, "%d/%d/%d", &novaLocacao.dataDevolucao.dia, &novaLocacao.dataDevolucao.mes, &novaLocacao.dataDevolucao.ano); // adiciona a data de devolucao
             break;
 
         case 5:
-            sscanf(linha, "Status: %s", novaLocacao.status);                          // adiciona o status da locacao
-            temp = (Locacao *)realloc(locacoes, sizeof(*temp) * (totalLocacoes + 1)); // realoca a memoria para alocar a nova locacao
+            // sscanf(linha, "Status: %s", novaLocacao.status);
+            strcpy(novaLocacao.status, linha);                                                // adiciona o status da locacao
+            temp = (Locacao *)realloc(locacoes, sizeof(*temp) * ((size_t)totalLocacoes + 1)); // realoca a memoria para alocar a nova locacao
             if (temp != NULL)
             {
                 locacoes = temp;
@@ -278,6 +307,7 @@ void incluirLocacoes()
 
     printf("\n%d locacoes cadastrados com sucesso!\n", totalLocacoes);
     printf("Comprovante salvo em: txt/Saidas/cadastros_de_locacoes_realizados.txt\n");
+    printf("Todos os cadastros salvos em: txt/CadastrosTotais/todas_as_locacoes.txt\n");
 }
 
 void vizualizarLocacoes()
@@ -306,6 +336,8 @@ void vizualizarLocacoes()
 
 void darBaixaLocacoes()
 {
+    limparTela();
+
     int op = 1;
     // enquanto o usuario desejar dar baixa em locacoes
     while (op != 0)
@@ -729,6 +761,16 @@ void limparTela()
 #ifdef _WIN32
     system("cls");
 #endif
+}
+
+void pontinhos()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        Sleep(300);
+        printf(".");
+    }
+    printf("\n");
 }
 
 void limparMemoria()

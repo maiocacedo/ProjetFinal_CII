@@ -1,0 +1,18 @@
+Locacao 1:
+Codigo do carro: 9
+Codigo do cliente: -1818232784
+Valor da locacao: 0.00
+Data da locacao: 0/0/-1855189904
+Data da devolucao: 383/0/0
+Status: 
+-----------------------------
+
+Locacao 1:
+Codigo do carro: 1
+Codigo do cliente: 1
+Valor da locacao: 34.50
+Data da locacao: 14/12/2024
+Data da devolucao: 17/12/2024
+Status: Ativa
+-----------------------------
+
