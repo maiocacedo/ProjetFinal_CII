@@ -1,16 +1,9 @@
 =======Cadastros Realizados Com Sucesso======
 
-Carro 1:
-Marca: FIAT
-Modelo: PALIO TURBO 
-Ano: 1
-Placa: URSS369
------------------------------
-
 Carro 2:
-Marca: chevrolete
-Modelo: camaro
-Ano: 2015
-Placa: fgc888
+Marca: Chevrolet
+Modelo: Chevy 500
+Ano: 1978
+Placa: NMD065
 -----------------------------
 

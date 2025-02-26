@@ -1,0 +1,9 @@
+Locacao 2:
+Codigo do carro: 1
+Codigo do cliente: 1
+Valor da Locacao: 34.50
+Data da Locacao: 14/12/2024
+Data da Devolucao: 17/12/2024
+Status: Ativa
+-----------------------------
+

@@ -40,3 +40,199 @@ Endereco: ksuihbs
 CPF: 35161354
 -----------------------------
 
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 1:
+Nome: Caio
+Telefone: (11) 9909-2393
+Endereco: Rua do Limoeiro
+CPF: 009.232.543-07
+-----------------------------
+
+Cliente 2:
+Nome: Gabriel
+Telefone: (14) 9987-0932
+Endereco: Rua 13 de Maio
+CPF: 523.938.908-07
+-----------------------------
+
+Cliente 3:
+Nome: José
+Telefone: (42) 9984-2578
+Endereco: Rua Paraná
+CPF: 190.005.302-64
+-----------------------------
+
