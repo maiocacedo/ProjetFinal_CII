@@ -5,6 +5,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <locale.h>
+
+//? CORES
+//? Cores do texto
+#define REDFG "\033[31m"
+#define GRNFG "\033[32m"
+#define BLUFG "\033[34m"
+
+//? Cores do fundo
+#define WHTBG "\033[47m"
+
+//? Animações de texto
+#define BLINK "\033[5m"
+#define BLINKS "\033[25m"
+#define RESET "\033[0m"
 
 //? CARRO
 #define MAX_CARROS 100
@@ -62,7 +77,7 @@ typedef struct
 extern Locacao *locacoes; // matriz global para armazenar os cadastros de locacoes
 extern int totalLocacoes; // variavel global para armazenar o total de locacoes
 
-//! FUNÇÕES
+//! OUTRAS FUNÇÕES
 void boasVindas(); // exibe a mensagem de boas vindas
 
 void menuPrincipal(); // exibe o menu principal
