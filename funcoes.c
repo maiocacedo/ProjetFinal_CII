@@ -299,12 +299,12 @@ void menuLocacaoCarros()
 #endif
         }
 
-        if (opc != 0)
-        {
-            printf("Pressione %sENTER%s para continuar", WHTBG, RESET);
-            pontinhos();
-            getchar();
-        }
+        // if (opc != 0)
+        // {
+        //     printf("Pressione %sENTER%s para continuar", WHTBG, RESET);
+        //     pontinhos();
+        //     getchar();
+        // }
 
     } while (opc != 0);
 }
@@ -376,7 +376,7 @@ void incluirLocacoes()
     fprintf(arquivoConfirmacao, "=======Cadastros Realizados Com Sucesso======\n\n");
     
     //? criando o arquivos totais
-    FILE *arquivoTotais = fopen("txt/CadastrosTotais/todas_as_locacoes.txt", "w");
+    FILE *arquivoTotais = fopen("txt/CadastrosTotais/todas_as_locacoes.txt", "a");
     
 
 
@@ -454,7 +454,7 @@ void incluirLocacoes()
                 fprintf(arquivoConfirmacao, "Código do cliente: %d\n", novaLocacao.codigoCliente);
                 fprintf(arquivoConfirmacao, "Valor da locação: %.2f\n", novaLocacao.valorLocacao);
                 fprintf(arquivoConfirmacao, "Data da locação: %d/%d/%d\n", novaLocacao.dataLocacao.dia, novaLocacao.dataLocacao.mes, novaLocacao.dataLocacao.ano);
-                fprintf(arquivoConfirmacao, "Data da devolução: %d/%d/%d\n", novaLocacao.dataDevolucao.dia, novaLocacao.dataDevolucao.mes, novaLocacao.dataDevolucao.ano);
+                fprintf(arquivoConfirmacao, "Data de devolução: %d/%d/%d\n", novaLocacao.dataDevolucao.dia, novaLocacao.dataDevolucao.mes, novaLocacao.dataDevolucao.ano);
                 fprintf(arquivoConfirmacao, "Status: %s\n", novaLocacao.status);
                 fprintf(arquivoConfirmacao, "-----------------------------\n\n");
 
@@ -463,7 +463,7 @@ void incluirLocacoes()
                 fprintf(arquivoTotais, "Codigo do cliente: %d\n", novaLocacao.codigoCliente);
                 fprintf(arquivoTotais, "Valor da locacao: %.2f\n", novaLocacao.valorLocacao);
                 fprintf(arquivoTotais, "Data da locacao: %d/%d/%d\n", novaLocacao.dataLocacao.dia, novaLocacao.dataLocacao.mes, novaLocacao.dataLocacao.ano);
-                fprintf(arquivoTotais, "Data da devolucao: %d/%d/%d\n", novaLocacao.dataDevolucao.dia, novaLocacao.dataDevolucao.mes, novaLocacao.dataDevolucao.ano);
+                fprintf(arquivoTotais, "Data de devolucao: %d/%d/%d\n", novaLocacao.dataDevolucao.dia, novaLocacao.dataDevolucao.mes, novaLocacao.dataDevolucao.ano);
                 fprintf(arquivoTotais, "Status: %s\n", novaLocacao.status);
 
                 totalLocacoes++;
