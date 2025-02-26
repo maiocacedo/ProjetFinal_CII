@@ -83,7 +83,7 @@ void menuLocacaoCarros()
         printf("\nDigite a opção a seguir: ");
         if (scanf("%d", &opc) != 1)
         {
-            limparBuffer();
+            //limparBuffer();
             opc = -1;
         }
 
@@ -129,7 +129,7 @@ void menuLocacaoCarros()
 
         if (opc != 0)
         {
-            printf("\nPressione %sENTER%s para continuar", WHTBG, RESET);
+            printf("Pressione %sENTER%s para continuar", WHTBG, RESET);
             pontinhos();
             getchar();
         }
